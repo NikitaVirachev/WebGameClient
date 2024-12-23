@@ -1,34 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
 import Player from './classes/Player.js';
-import { io } from "socket.io-client";
+import { io } from 'socket.io-client';
 
 const socket = io();
 
 const players = {};
 
-socket.on("updatePlayers", (backendPlayers) => {
-    // Save players
-    for (const id in backendPlayers) {
-        const backendPlayer = backendPlayers[id];
+socket.on('updatePlayers', (backendPlayers) => {
+  // Save players
+  for (const id in backendPlayers) {
+    const backendPlayer = backendPlayers[id];
 
-        if (!players[id]) {
-            players[id] = new Player(backendPlayer.x, backendPlayer.y);
-        }
+    if (!players[id]) {
+      players[id] = new Player(backendPlayer.x, backendPlayer.y);
     }
+  }
 
-    // Delete diconected player when he leaves
-    for (const id in players) {
-        if (!backendPlayers[id]) {
-            delete players[id];
-        }
+  // Delete diconected player when he leaves
+  for (const id in players) {
+    if (!backendPlayers[id]) {
+      delete players[id];
     }
+  }
 });
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
@@ -53,7 +53,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

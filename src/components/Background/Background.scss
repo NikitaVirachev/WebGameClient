@@ -1,0 +1,21 @@
+.background {
+  height: 100%;
+  background-color: var(--blue-sky);
+  background-image: url(../../assets/clouds/Cloud-1.svg),
+    url(../../assets/clouds/Cloud-2.svg), url(../../assets/clouds/Cloud-3.svg),
+    url(../../assets/clouds/Cloud-4.svg), url(../../assets/clouds/Cloud-5.svg),
+    url(../../assets/clouds/Cloud-6.svg), url(../../assets/clouds/Cloud-1.svg),
+    url(../../assets/clouds/Cloud-2.svg), url(../../assets/clouds/Cloud-4.svg);
+  background-position:
+    5% 10%,
+    60% 15%,
+    30% 40%,
+    80% 50%,
+    20% 70%,
+    70% 90%,
+    107% 116%,
+    117% 2%,
+    -5% 90%;
+  background-size: 15%, 20%, 25%, 30%, 15%, 20%, 25%, 30%, 15%;
+  background-repeat: no-repeat;
+}

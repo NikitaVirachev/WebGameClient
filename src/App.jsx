@@ -1,3 +1,4 @@
+import Login from './components/Pages/Login/Login.jsx';
 import './App.css';
 import Player from './classes/Player.js';
 import { io } from 'socket.io-client';
@@ -25,7 +26,11 @@ socket.on('updatePlayers', (backendPlayers) => {
 });
 
 function App() {
-  return <div>Hello</div>;
+  return (
+    <>
+      <Login />
+    </>
+  );
 }
 
 export default App;

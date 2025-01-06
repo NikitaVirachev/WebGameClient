@@ -1,57 +1,157 @@
 @media screen {
   .background {
+    --first-cloud-X: 5%;
+    --first-cloud-Y: 10%;
+    --first-cloud-size: 33rem;
+    --second-cloud-X: 60%;
+    --second-cloud-Y: 15%;
+    --second-cloud-size: 35rem;
+    --third-cloud-X: 30%;
+    --third-cloud-Y: 40%;
+    --third-cloud-size: 40rem;
+    --fourth-cloud-X: 80%;
+    --fourth-cloud-Y: 50%;
+    --fourth-cloud-size: 50rem;
+    --fifth-cloud-X: 20%;
+    --fifth-cloud-Y: 70%;
+    --fifth-cloud-size: 35rem;
+    --sixth-cloud-X: 70%;
+    --sixth-cloud-Y: 90%;
+    --sixth-cloud-size: 46rem;
+    --seventh-cloud-X: 99%;
+    --seventh-cloud-Y: 116%;
+    --seventh-cloud-size: 45rem;
+    --eighth-cloud-X: 90%;
+    --eighth-cloud-Y: 2%;
+    --eighth-cloud-size: 50rem;
+    --nineth-cloud-X: 5%;
+    --nineth-cloud-Y: 90%;
+    --nineth-cloud-size: 28rem;
+
     height: 100%;
     background-color: var(--blue-sky);
     background-image: url(../../assets/clouds/Cloud-1.svg),
+      url(../../assets/clouds/Cloud-1.svg),
+      url(../../assets/clouds/Cloud-2.svg),
       url(../../assets/clouds/Cloud-2.svg),
       url(../../assets/clouds/Cloud-3.svg),
+      url(../../assets/clouds/Cloud-3.svg),
+      url(../../assets/clouds/Cloud-4.svg),
       url(../../assets/clouds/Cloud-4.svg),
       url(../../assets/clouds/Cloud-5.svg),
+      url(../../assets/clouds/Cloud-5.svg),
+      url(../../assets/clouds/Cloud-6.svg),
       url(../../assets/clouds/Cloud-6.svg),
       url(../../assets/clouds/Cloud-1.svg),
-      url(../../assets/clouds/Cloud-2.svg), url(../../assets/clouds/Cloud-4.svg);
+      url(../../assets/clouds/Cloud-1.svg),
+      url(../../assets/clouds/Cloud-2.svg),
+      url(../../assets/clouds/Cloud-2.svg),
+      url(../../assets/clouds/Cloud-4.svg), url(../../assets/clouds/Cloud-4.svg);
     background-position:
-      5% 10%,
-      60% 15%,
-      30% 40%,
-      80% 50%,
-      20% 70%,
-      70% 90%,
-      107% 116%,
-      117% 2%,
-      -5% 90%;
-    background-size: 33rem, 35rem, 40rem, 50rem, 35rem, 46rem, 45rem, 50rem,
-      28rem;
+      var(--first-cloud-X) var(--first-cloud-Y),
+      calc(var(--first-cloud-X) + 100% + var(--first-cloud-size))
+        var(--first-cloud-Y),
+      var(--second-cloud-X) var(--second-cloud-Y),
+      calc(var(--second-cloud-X) + 100% + var(--second-cloud-size))
+        var(--second-cloud-Y),
+      var(--third-cloud-X) var(--third-cloud-Y),
+      calc(var(--third-cloud-X) + 100% + var(--third-cloud-size))
+        var(--third-cloud-Y),
+      var(--fourth-cloud-X) var(--fourth-cloud-Y),
+      calc(var(--fourth-cloud-X) + 100% + var(--fourth-cloud-size))
+        var(--fourth-cloud-Y),
+      var(--fifth-cloud-X) var(--fifth-cloud-Y),
+      calc(var(--fifth-cloud-X) + 100% + var(--fifth-cloud-size))
+        var(--fifth-cloud-Y),
+      var(--sixth-cloud-X) var(--sixth-cloud-Y),
+      calc(var(--sixth-cloud-X) + 100% + var(--sixth-cloud-size))
+        var(--sixth-cloud-Y),
+      var(--seventh-cloud-X) var(--seventh-cloud-Y),
+      calc(var(--seventh-cloud-X) + 100% + var(--seventh-cloud-size))
+        var(--seventh-cloud-Y),
+      var(--eighth-cloud-X) var(--eighth-cloud-Y),
+      calc(var(--eighth-cloud-X) + 100% + var(--eighth-cloud-size))
+        var(--eighth-cloud-Y),
+      var(--nineth-cloud-X) var(--nineth-cloud-Y),
+      calc(var(--nineth-cloud-X) + 100% + var(--nineth-cloud-size))
+        var(--nineth-cloud-Y);
+    background-size: var(--first-cloud-size), var(--first-cloud-size),
+      var(--second-cloud-size), var(--second-cloud-size),
+      var(--third-cloud-size), var(--third-cloud-size),
+      var(--fourth-cloud-size), var(--fourth-cloud-size),
+      var(--fifth-cloud-size), var(--fifth-cloud-size), var(--sixth-cloud-size),
+      var(--sixth-cloud-size), var(--seventh-cloud-size),
+      var(--seventh-cloud-size), var(--eighth-cloud-size),
+      var(--eighth-cloud-size), var(--nineth-cloud-size),
+      var(--nineth-cloud-size);
     background-repeat: no-repeat;
+
+    animation-name: infinite-scrolling;
+    animation-duration: 16s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 
     @media (800px < height <= 1000px) or (1145px < width <= 1440px) {
       background-size: 25rem, 28rem, 33rem, 44rem, 25rem, 26rem, 40rem, 44rem,
-        25rem;
+        25rem, 40rem, 44rem, 25rem;
     }
 
     @media (600px < height <= 800px) or (1024px < width <= 1145px) {
       background-size: 23rem, 25rem, 30rem, 39rem, 22rem, 23rem, 36rem, 42rem,
-        23rem;
+        23rem, 36rem, 42rem, 23rem;
     }
 
     @media (500px < height <= 600px) or (768px < width <= 1024px) {
       background-size: 21rem, 25rem, 28rem, 36rem, 21rem, 21rem, 34rem, 40rem,
-        22rem;
+        22rem, 34rem, 40rem, 22rem;
     }
 
     @media (height <= 500px) or (620px < width <= 768px) {
       background-size: 20rem, 24rem, 26rem, 33rem, 20rem, 19rem, 31rem, 39rem,
-        21rem;
+        21rem, 31rem, 39rem, 21rem;
     }
 
     @media (500px < width <= 620px) {
       background-size: 16rem, 21rem, 24rem, 30rem, 18rem, 17rem, 31rem, 34rem,
-        19rem;
+        19rem, 31rem, 34rem, 19rem;
     }
 
     @media (width <= 500px) {
       background-size: 13rem, 18rem, 21rem, 27rem, 18rem, 16rem, 31rem, 30rem,
-        17rem;
+        17rem, 31rem, 30rem, 17rem;
     }
+  }
+}
+
+@keyframes infinite-scrolling {
+  to {
+    background-position:
+      calc(var(--first-cloud-X) - 100% - var(--first-cloud-size))
+        var(--first-cloud-Y),
+      var(--first-cloud-X) var(--first-cloud-Y),
+      calc(var(--second-cloud-X) - 100% - var(--second-cloud-size))
+        var(--second-cloud-Y),
+      var(--second-cloud-X) var(--second-cloud-Y),
+      calc(var(--third-cloud-X) - 100% - var(--third-cloud-size))
+        var(--third-cloud-Y),
+      var(--third-cloud-X) var(--third-cloud-Y),
+      calc(var(--fourth-cloud-X) - 100% - var(--fourth-cloud-size))
+        var(--fourth-cloud-Y),
+      var(--fourth-cloud-X) var(--fourth-cloud-Y),
+      calc(var(--fifth-cloud-X) - 100% - var(--fifth-cloud-size))
+        var(--fifth-cloud-Y),
+      var(--fifth-cloud-X) var(--fifth-cloud-Y),
+      calc(var(--sixth-cloud-X) - 100% - var(--sixth-cloud-size))
+        var(--sixth-cloud-Y),
+      var(--sixth-cloud-X) var(--sixth-cloud-Y),
+      calc(var(--seventh-cloud-X) - 100% - var(--seventh-cloud-size))
+        var(--seventh-cloud-Y),
+      var(--seventh-cloud-X) var(--seventh-cloud-Y),
+      calc(var(--eighth-cloud-X) - 100% - var(--eighth-cloud-size))
+        var(--eighth-cloud-Y),
+      var(--eighth-cloud-X) var(--eighth-cloud-Y),
+      calc(var(--nineth-cloud-X) - 100% - var(--nineth-cloud-size))
+        var(--nineth-cloud-Y),
+      var(--nineth-cloud-X) var(--nineth-cloud-Y);
   }
 }

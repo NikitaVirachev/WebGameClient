@@ -15,6 +15,21 @@
   }
 }
 
+@function generate-start-cloud-positions() {
+  $positions: ();
+
+  @for $i from 1 through 9 {
+    $left: var(--cloud-#{$i}-X) var(--cloud-#{$i}-Y);
+    $right: x-offset-right(var(--cloud-#{$i}-X), var(--cloud-#{$i}-size))
+      var(--cloud-#{$i}-Y);
+
+    $positions: list.append($positions, $left, $separator: comma);
+    $positions: list.append($positions, $right, $separator: comma);
+  }
+
+  @return $positions;
+}
+
 $media-sizes: (
   '(800px < height <= 1000px) or (1145px < width <= 1440px)': (
     25rem,
@@ -133,25 +148,7 @@ $media-sizes: (
       url(../../assets/clouds/Cloud-5.svg),
       url(../../assets/clouds/Cloud-5.svg),
       url(../../assets/clouds/Cloud-4.svg), url(../../assets/clouds/Cloud-4.svg);
-    background-position:
-      var(--cloud-1-X) var(--cloud-1-Y),
-      x-offset-right(var(--cloud-1-X), var(--cloud-1-size)) var(--cloud-1-Y),
-      var(--cloud-2-X) var(--cloud-2-Y),
-      x-offset-right(var(--cloud-2-X), var(--cloud-2-size)) var(--cloud-2-Y),
-      var(--cloud-3-X) var(--cloud-3-Y),
-      x-offset-right(var(--cloud-3-X), var(--cloud-3-size)) var(--cloud-3-Y),
-      var(--cloud-4-X) var(--cloud-4-Y),
-      x-offset-right(var(--cloud-4-X), var(--cloud-4-size)) var(--cloud-4-Y),
-      var(--cloud-5-X) var(--cloud-5-Y),
-      x-offset-right(var(--cloud-5-X), var(--cloud-5-size)) var(--cloud-5-Y),
-      var(--cloud-6-X) var(--cloud-6-Y),
-      x-offset-right(var(--cloud-6-X), var(--cloud-6-size)) var(--cloud-6-Y),
-      var(--cloud-7-X) var(--cloud-7-Y),
-      x-offset-right(var(--cloud-7-X), var(--cloud-7-size)) var(--cloud-7-Y),
-      var(--cloud-8-X) var(--cloud-8-Y),
-      x-offset-right(var(--cloud-8-X), var(--cloud-8-size)) var(--cloud-8-Y),
-      var(--cloud-9-X) var(--cloud-9-Y),
-      x-offset-right(var(--cloud-9-X), var(--cloud-9-size)) var(--cloud-9-Y);
+    background-position: #{generate-start-cloud-positions()};
     background-size: var(--cloud-1-size), var(--cloud-1-size),
       var(--cloud-2-size), var(--cloud-2-size), var(--cloud-3-size),
       var(--cloud-3-size), var(--cloud-4-size), var(--cloud-4-size),

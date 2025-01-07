@@ -92,33 +92,75 @@
     animation-timing-function: linear;
 
     @media (800px < height <= 1000px) or (1145px < width <= 1440px) {
-      background-size: 25rem, 28rem, 33rem, 44rem, 25rem, 26rem, 40rem, 44rem,
-        25rem, 40rem, 44rem, 25rem;
+      --first-cloud-size: 25rem;
+      --second-cloud-size: 28rem;
+      --third-cloud-size: 33rem;
+      --fourth-cloud-size: 44rem;
+      --fifth-cloud-size: 25rem;
+      --sixth-cloud-size: 26rem;
+      --seventh-cloud-size: 40rem;
+      --eighth-cloud-size: 40rem;
+      --nineth-cloud-size: 25rem;
     }
 
     @media (600px < height <= 800px) or (1024px < width <= 1145px) {
-      background-size: 23rem, 25rem, 30rem, 39rem, 22rem, 23rem, 36rem, 42rem,
-        23rem, 36rem, 42rem, 23rem;
+      --first-cloud-size: 23rem;
+      --second-cloud-size: 25rem;
+      --third-cloud-size: 30rem;
+      --fourth-cloud-size: 39rem;
+      --fifth-cloud-size: 22rem;
+      --sixth-cloud-size: 23rem;
+      --seventh-cloud-size: 36rem;
+      --eighth-cloud-size: 39rem;
+      --nineth-cloud-size: 23rem;
     }
 
     @media (500px < height <= 600px) or (768px < width <= 1024px) {
-      background-size: 21rem, 25rem, 28rem, 36rem, 21rem, 21rem, 34rem, 40rem,
-        22rem, 34rem, 40rem, 22rem;
+      --first-cloud-size: 21rem;
+      --second-cloud-size: 25rem;
+      --third-cloud-size: 28rem;
+      --fourth-cloud-size: 36rem;
+      --fifth-cloud-size: 21rem;
+      --sixth-cloud-size: 21rem;
+      --seventh-cloud-size: 34rem;
+      --eighth-cloud-size: 36rem;
+      --nineth-cloud-size: 22rem;
     }
 
     @media (height <= 500px) or (620px < width <= 768px) {
-      background-size: 20rem, 24rem, 26rem, 33rem, 20rem, 19rem, 31rem, 39rem,
-        21rem, 31rem, 39rem, 21rem;
+      --first-cloud-size: 20rem;
+      --second-cloud-size: 24rem;
+      --third-cloud-size: 26rem;
+      --fourth-cloud-size: 33rem;
+      --fifth-cloud-size: 20rem;
+      --sixth-cloud-size: 19rem;
+      --seventh-cloud-size: 31rem;
+      --eighth-cloud-size: 36rem;
+      --nineth-cloud-size: 21rem;
     }
 
     @media (500px < width <= 620px) {
-      background-size: 16rem, 21rem, 24rem, 30rem, 18rem, 17rem, 31rem, 34rem,
-        19rem, 31rem, 34rem, 19rem;
+      --first-cloud-size: 16rem;
+      --second-cloud-size: 21rem;
+      --third-cloud-size: 24rem;
+      --fourth-cloud-size: 30rem;
+      --fifth-cloud-size: 18rem;
+      --sixth-cloud-size: 17rem;
+      --seventh-cloud-size: 31rem;
+      --eighth-cloud-size: 34rem;
+      --nineth-cloud-size: 19rem;
     }
 
     @media (width <= 500px) {
-      background-size: 13rem, 18rem, 21rem, 27rem, 18rem, 16rem, 31rem, 30rem,
-        17rem, 31rem, 30rem, 17rem;
+      --first-cloud-size: 13rem;
+      --second-cloud-size: 18rem;
+      --third-cloud-size: 21rem;
+      --fourth-cloud-size: 27rem;
+      --fifth-cloud-size: 18rem;
+      --sixth-cloud-size: 16rem;
+      --seventh-cloud-size: 31rem;
+      --eighth-cloud-size: 28rem;
+      --nineth-cloud-size: 17rem;
     }
   }
 }

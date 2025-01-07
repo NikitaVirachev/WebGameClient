@@ -14,6 +14,75 @@
   }
 }
 
+$media-sizes: (
+  '(800px < height <= 1000px) or (1145px < width <= 1440px)': (
+    25rem,
+    28rem,
+    33rem,
+    44rem,
+    25rem,
+    26rem,
+    40rem,
+    40rem,
+    25rem,
+  ),
+  '(600px < height <= 800px) or (1024px < width <= 1145px)': (
+    23rem,
+    25rem,
+    30rem,
+    39rem,
+    22rem,
+    23rem,
+    36rem,
+    39rem,
+    23rem,
+  ),
+  '(500px < height <= 600px) or (768px < width <= 1024px)': (
+    21rem,
+    25rem,
+    28rem,
+    36rem,
+    21rem,
+    21rem,
+    34rem,
+    36rem,
+    22rem,
+  ),
+  '(height <= 500px) or (620px < width <= 768px)': (
+    20rem,
+    24rem,
+    26rem,
+    33rem,
+    20rem,
+    19rem,
+    31rem,
+    36rem,
+    21rem,
+  ),
+  '(500px < width <= 620px)': (
+    16rem,
+    21rem,
+    24rem,
+    30rem,
+    18rem,
+    17rem,
+    31rem,
+    34rem,
+    19rem,
+  ),
+  '(width <= 500px)': (
+    13rem,
+    18rem,
+    21rem,
+    27rem,
+    18rem,
+    16rem,
+    31rem,
+    28rem,
+    17rem,
+  ),
+);
+
 @media screen {
   .background {
     --first-cloud-X: 5%;
@@ -105,40 +174,10 @@
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 
-    @media (800px < height <= 1000px) or (1145px < width <= 1440px) {
-      @include set-image-size(
-        (25rem, 28rem, 33rem, 44rem, 25rem, 26rem, 40rem, 40rem, 25rem)
-      );
-    }
-
-    @media (600px < height <= 800px) or (1024px < width <= 1145px) {
-      @include set-image-size(
-        (23rem, 25rem, 30rem, 39rem, 22rem, 23rem, 36rem, 39rem, 23rem)
-      );
-    }
-
-    @media (500px < height <= 600px) or (768px < width <= 1024px) {
-      @include set-image-size(
-        (21rem, 25rem, 28rem, 36rem, 21rem, 21rem, 34rem, 36rem, 22rem)
-      );
-    }
-
-    @media (height <= 500px) or (620px < width <= 768px) {
-      @include set-image-size(
-        (20rem, 24rem, 26rem, 33rem, 20rem, 19rem, 31rem, 36rem, 21rem)
-      );
-    }
-
-    @media (500px < width <= 620px) {
-      @include set-image-size(
-        (16rem, 21rem, 24rem, 30rem, 18rem, 17rem, 31rem, 34rem, 19rem)
-      );
-    }
-
-    @media (width <= 500px) {
-      @include set-image-size(
-        (13rem, 18rem, 21rem, 27rem, 18rem, 16rem, 31rem, 28rem, 17rem)
-      );
+    @each $condition, $sizes in $media-sizes {
+      @media #{$condition} {
+        @include set-image-size($sizes);
+      }
     }
   }
 }

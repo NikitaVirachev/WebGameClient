@@ -30,6 +30,21 @@
   @return $positions;
 }
 
+@function generate-end-cloud-positions() {
+  $positions: ();
+
+  @for $i from 1 through 9 {
+    $left: x-offset-left(var(--cloud-#{$i}-X), var(--cloud-#{$i}-size))
+      var(--cloud-#{$i}-Y);
+    $right: var(--cloud-#{$i}-X) var(--cloud-#{$i}-Y);
+
+    $positions: list.append($positions, $left, $separator: comma);
+    $positions: list.append($positions, $right, $separator: comma);
+  }
+
+  @return $positions;
+}
+
 $media-sizes: (
   '(800px < height <= 1000px) or (1145px < width <= 1440px)': (
     25rem,
@@ -169,21 +184,6 @@ $media-sizes: (
       }
     }
   }
-}
-
-@function generate-end-cloud-positions() {
-  $positions: ();
-
-  @for $i from 1 through 9 {
-    $left: x-offset-left(var(--cloud-#{$i}-X), var(--cloud-#{$i}-size))
-      var(--cloud-#{$i}-Y);
-    $right: var(--cloud-#{$i}-X) var(--cloud-#{$i}-Y);
-
-    $positions: list.append($positions, $left, $separator: comma);
-    $positions: list.append($positions, $right, $separator: comma);
-  }
-
-  @return $positions;
 }
 
 @keyframes infinite-scrolling {

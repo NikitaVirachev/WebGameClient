@@ -1,0 +1,193 @@
+@use 'sass:meta';
+@use 'sass:list';
+
+@function x-offset-right($x-coord, $size) {
+  @return calc($x-coord + 100% + $size);
+}
+
+@function x-offset-left($x-coord, $size) {
+  @return calc($x-coord - 100% - $size);
+}
+
+@mixin set-image-size($sizes) {
+  @for $i from 1 through list.length($sizes) {
+    --cloud-#{$i}-size: #{list.nth($sizes, $i)};
+  }
+}
+
+@function generate-start-cloud-positions() {
+  $positions: ();
+
+  @for $i from 1 through 9 {
+    $left: var(--cloud-#{$i}-X) var(--cloud-#{$i}-Y);
+    $right: x-offset-right(var(--cloud-#{$i}-X), var(--cloud-#{$i}-size))
+      var(--cloud-#{$i}-Y);
+
+    $positions: list.append($positions, $left, $separator: comma);
+    $positions: list.append($positions, $right, $separator: comma);
+  }
+
+  @return $positions;
+}
+
+@function generate-end-cloud-positions() {
+  $positions: ();
+
+  @for $i from 1 through 9 {
+    $left: x-offset-left(var(--cloud-#{$i}-X), var(--cloud-#{$i}-size))
+      var(--cloud-#{$i}-Y);
+    $right: var(--cloud-#{$i}-X) var(--cloud-#{$i}-Y);
+
+    $positions: list.append($positions, $left, $separator: comma);
+    $positions: list.append($positions, $right, $separator: comma);
+  }
+
+  @return $positions;
+}
+
+$media-sizes: (
+  '(800px < height <= 1000px) or (1145px < width <= 1440px)': (
+    25rem,
+    28rem,
+    33rem,
+    44rem,
+    25rem,
+    26rem,
+    40rem,
+    40rem,
+    25rem,
+  ),
+  '(600px < height <= 800px) or (1024px < width <= 1145px)': (
+    23rem,
+    25rem,
+    30rem,
+    39rem,
+    22rem,
+    23rem,
+    36rem,
+    39rem,
+    23rem,
+  ),
+  '(500px < height <= 600px) or (768px < width <= 1024px)': (
+    21rem,
+    25rem,
+    28rem,
+    36rem,
+    21rem,
+    21rem,
+    34rem,
+    36rem,
+    22rem,
+  ),
+  '(height <= 500px) or (620px < width <= 768px)': (
+    20rem,
+    24rem,
+    26rem,
+    33rem,
+    20rem,
+    19rem,
+    31rem,
+    36rem,
+    21rem,
+  ),
+  '(500px < width <= 620px)': (
+    16rem,
+    21rem,
+    24rem,
+    30rem,
+    18rem,
+    17rem,
+    31rem,
+    34rem,
+    19rem,
+  ),
+  '(width <= 500px)': (
+    13rem,
+    18rem,
+    21rem,
+    27rem,
+    18rem,
+    16rem,
+    31rem,
+    28rem,
+    17rem,
+  ),
+);
+
+@media screen {
+  .background {
+    --cloud-1-X: 5%;
+    --cloud-1-Y: 10%;
+    --cloud-1-size: 33rem;
+    --cloud-2-X: 60%;
+    --cloud-2-Y: 15%;
+    --cloud-2-size: 35rem;
+    --cloud-3-X: 30%;
+    --cloud-3-Y: 40%;
+    --cloud-3-size: 40rem;
+    --cloud-4-X: 80%;
+    --cloud-4-Y: 50%;
+    --cloud-4-size: 50rem;
+    --cloud-5-X: 20%;
+    --cloud-5-Y: 70%;
+    --cloud-5-size: 35rem;
+    --cloud-6-X: 70%;
+    --cloud-6-Y: 90%;
+    --cloud-6-size: 46rem;
+    --cloud-7-X: 99%;
+    --cloud-7-Y: 116%;
+    --cloud-7-size: 45rem;
+    --cloud-8-X: 90%;
+    --cloud-8-Y: 2%;
+    --cloud-8-size: 50rem;
+    --cloud-9-X: 5%;
+    --cloud-9-Y: 90%;
+    --cloud-9-size: 28rem;
+
+    height: 100%;
+    background-color: var(--blue-sky);
+    background-image: url(../../assets/clouds/Cloud-1.svg),
+      url(../../assets/clouds/Cloud-1.svg),
+      url(../../assets/clouds/Cloud-2.svg),
+      url(../../assets/clouds/Cloud-2.svg),
+      url(../../assets/clouds/Cloud-3.svg),
+      url(../../assets/clouds/Cloud-3.svg),
+      url(../../assets/clouds/Cloud-4.svg),
+      url(../../assets/clouds/Cloud-4.svg),
+      url(../../assets/clouds/Cloud-5.svg),
+      url(../../assets/clouds/Cloud-5.svg),
+      url(../../assets/clouds/Cloud-6.svg),
+      url(../../assets/clouds/Cloud-6.svg),
+      url(../../assets/clouds/Cloud-1.svg),
+      url(../../assets/clouds/Cloud-1.svg),
+      url(../../assets/clouds/Cloud-5.svg),
+      url(../../assets/clouds/Cloud-5.svg),
+      url(../../assets/clouds/Cloud-4.svg), url(../../assets/clouds/Cloud-4.svg);
+    background-position: #{generate-start-cloud-positions()};
+    background-size: var(--cloud-1-size), var(--cloud-1-size),
+      var(--cloud-2-size), var(--cloud-2-size), var(--cloud-3-size),
+      var(--cloud-3-size), var(--cloud-4-size), var(--cloud-4-size),
+      var(--cloud-5-size), var(--cloud-5-size), var(--cloud-6-size),
+      var(--cloud-6-size), var(--cloud-7-size), var(--cloud-7-size),
+      var(--cloud-8-size), var(--cloud-8-size), var(--cloud-9-size),
+      var(--cloud-9-size);
+    background-repeat: no-repeat;
+
+    animation-name: infinite-scrolling;
+    animation-duration: 16s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+
+    @each $condition, $sizes in $media-sizes {
+      @media #{$condition} {
+        @include set-image-size($sizes);
+      }
+    }
+  }
+}
+
+@keyframes infinite-scrolling {
+  to {
+    background-position: #{generate-end-cloud-positions()};
+  }
+}

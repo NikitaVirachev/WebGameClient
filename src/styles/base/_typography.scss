@@ -11,13 +11,15 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  --white: #fff;
-  --black: #000;
-  --light-blue: #78afd6;
-  --blue-sky: #2ab1bd;
 }
 
 html {
   font-size: 62.5%;
+}
+
+@font-face {
+  font-family: 'AncientModernTales';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/src/assets/fonts/AncientModernTales.ttf');
 }

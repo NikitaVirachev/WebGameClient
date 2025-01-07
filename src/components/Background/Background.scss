@@ -10,7 +10,7 @@
 }
 
 @mixin set-image-size($sizes) {
-  @for $i from 1 through length($sizes) {
+  @for $i from 1 through list.length($sizes) {
     --cloud-#{$i}-size: #{list.nth($sizes, $i)};
   }
 }

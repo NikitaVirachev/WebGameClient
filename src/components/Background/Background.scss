@@ -1,3 +1,35 @@
+@use 'sass:meta';
+
+@function x-offset-right($x-coord, $size) {
+  @return calc($x-coord + 100% + $size);
+}
+
+@function x-offset-left($x-coord, $size) {
+  @return calc($x-coord - 100% - $size);
+}
+
+@mixin set-image-size(
+  $first-size,
+  $second-size,
+  $third-size,
+  $fourth-size,
+  $fifth-size,
+  $sixth-size,
+  $seventh-size,
+  $eighth-size,
+  $nineth-size
+) {
+  --first-cloud-size: #{$first-size};
+  --second-cloud-size: #{$second-size};
+  --third-cloud-size: #{$third-size};
+  --fourth-cloud-size: #{$fourth-size};
+  --fifth-cloud-size: #{$fifth-size};
+  --sixth-cloud-size: #{$sixth-size};
+  --seventh-cloud-size: #{$seventh-size};
+  --eighth-cloud-size: #{$eighth-size};
+  --nineth-cloud-size: #{$nineth-size};
+}
+
 @media screen {
   .background {
     --first-cloud-X: 5%;
@@ -49,31 +81,31 @@
       url(../../assets/clouds/Cloud-4.svg), url(../../assets/clouds/Cloud-4.svg);
     background-position:
       var(--first-cloud-X) var(--first-cloud-Y),
-      calc(var(--first-cloud-X) + 100% + var(--first-cloud-size))
+      x-offset-right(var(--first-cloud-X), var(--first-cloud-size))
         var(--first-cloud-Y),
       var(--second-cloud-X) var(--second-cloud-Y),
-      calc(var(--second-cloud-X) + 100% + var(--second-cloud-size))
+      x-offset-right(var(--second-cloud-X), var(--second-cloud-size))
         var(--second-cloud-Y),
       var(--third-cloud-X) var(--third-cloud-Y),
-      calc(var(--third-cloud-X) + 100% + var(--third-cloud-size))
+      x-offset-right(var(--third-cloud-X), var(--third-cloud-size))
         var(--third-cloud-Y),
       var(--fourth-cloud-X) var(--fourth-cloud-Y),
-      calc(var(--fourth-cloud-X) + 100% + var(--fourth-cloud-size))
+      x-offset-right(var(--fourth-cloud-X), var(--fourth-cloud-size))
         var(--fourth-cloud-Y),
       var(--fifth-cloud-X) var(--fifth-cloud-Y),
-      calc(var(--fifth-cloud-X) + 100% + var(--fifth-cloud-size))
+      x-offset-right(var(--fifth-cloud-X), var(--fifth-cloud-size))
         var(--fifth-cloud-Y),
       var(--sixth-cloud-X) var(--sixth-cloud-Y),
-      calc(var(--sixth-cloud-X) + 100% + var(--sixth-cloud-size))
+      x-offset-right(var(--sixth-cloud-X), var(--sixth-cloud-size))
         var(--sixth-cloud-Y),
       var(--seventh-cloud-X) var(--seventh-cloud-Y),
-      calc(var(--seventh-cloud-X) + 100% + var(--seventh-cloud-size))
+      x-offset-right(var(--seventh-cloud-X), var(--seventh-cloud-size))
         var(--seventh-cloud-Y),
       var(--eighth-cloud-X) var(--eighth-cloud-Y),
-      calc(var(--eighth-cloud-X) + 100% + var(--eighth-cloud-size))
+      x-offset-right(var(--eighth-cloud-X), var(--eighth-cloud-size))
         var(--eighth-cloud-Y),
       var(--nineth-cloud-X) var(--nineth-cloud-Y),
-      calc(var(--nineth-cloud-X) + 100% + var(--nineth-cloud-size))
+      x-offset-right(var(--nineth-cloud-X), var(--nineth-cloud-size))
         var(--nineth-cloud-Y);
     background-size: var(--first-cloud-size), var(--first-cloud-size),
       var(--second-cloud-size), var(--second-cloud-size),
@@ -92,75 +124,87 @@
     animation-timing-function: linear;
 
     @media (800px < height <= 1000px) or (1145px < width <= 1440px) {
-      --first-cloud-size: 25rem;
-      --second-cloud-size: 28rem;
-      --third-cloud-size: 33rem;
-      --fourth-cloud-size: 44rem;
-      --fifth-cloud-size: 25rem;
-      --sixth-cloud-size: 26rem;
-      --seventh-cloud-size: 40rem;
-      --eighth-cloud-size: 40rem;
-      --nineth-cloud-size: 25rem;
+      @include set-image-size(
+        25rem,
+        28rem,
+        33rem,
+        44rem,
+        25rem,
+        26rem,
+        40rem,
+        40rem,
+        25rem
+      );
     }
 
     @media (600px < height <= 800px) or (1024px < width <= 1145px) {
-      --first-cloud-size: 23rem;
-      --second-cloud-size: 25rem;
-      --third-cloud-size: 30rem;
-      --fourth-cloud-size: 39rem;
-      --fifth-cloud-size: 22rem;
-      --sixth-cloud-size: 23rem;
-      --seventh-cloud-size: 36rem;
-      --eighth-cloud-size: 39rem;
-      --nineth-cloud-size: 23rem;
+      @include set-image-size(
+        23rem,
+        25rem,
+        30rem,
+        39rem,
+        22rem,
+        23rem,
+        36rem,
+        39rem,
+        23rem
+      );
     }
 
     @media (500px < height <= 600px) or (768px < width <= 1024px) {
-      --first-cloud-size: 21rem;
-      --second-cloud-size: 25rem;
-      --third-cloud-size: 28rem;
-      --fourth-cloud-size: 36rem;
-      --fifth-cloud-size: 21rem;
-      --sixth-cloud-size: 21rem;
-      --seventh-cloud-size: 34rem;
-      --eighth-cloud-size: 36rem;
-      --nineth-cloud-size: 22rem;
+      @include set-image-size(
+        21rem,
+        25rem,
+        28rem,
+        36rem,
+        21rem,
+        21rem,
+        34rem,
+        36rem,
+        22rem
+      );
     }
 
     @media (height <= 500px) or (620px < width <= 768px) {
-      --first-cloud-size: 20rem;
-      --second-cloud-size: 24rem;
-      --third-cloud-size: 26rem;
-      --fourth-cloud-size: 33rem;
-      --fifth-cloud-size: 20rem;
-      --sixth-cloud-size: 19rem;
-      --seventh-cloud-size: 31rem;
-      --eighth-cloud-size: 36rem;
-      --nineth-cloud-size: 21rem;
+      @include set-image-size(
+        20rem,
+        24rem,
+        26rem,
+        33rem,
+        20rem,
+        19rem,
+        31rem,
+        36rem,
+        21rem
+      );
     }
 
     @media (500px < width <= 620px) {
-      --first-cloud-size: 16rem;
-      --second-cloud-size: 21rem;
-      --third-cloud-size: 24rem;
-      --fourth-cloud-size: 30rem;
-      --fifth-cloud-size: 18rem;
-      --sixth-cloud-size: 17rem;
-      --seventh-cloud-size: 31rem;
-      --eighth-cloud-size: 34rem;
-      --nineth-cloud-size: 19rem;
+      @include set-image-size(
+        16rem,
+        21rem,
+        24rem,
+        30rem,
+        18rem,
+        17rem,
+        31rem,
+        34rem,
+        19rem
+      );
     }
 
     @media (width <= 500px) {
-      --first-cloud-size: 13rem;
-      --second-cloud-size: 18rem;
-      --third-cloud-size: 21rem;
-      --fourth-cloud-size: 27rem;
-      --fifth-cloud-size: 18rem;
-      --sixth-cloud-size: 16rem;
-      --seventh-cloud-size: 31rem;
-      --eighth-cloud-size: 28rem;
-      --nineth-cloud-size: 17rem;
+      @include set-image-size(
+        13rem,
+        18rem,
+        21rem,
+        27rem,
+        18rem,
+        16rem,
+        31rem,
+        28rem,
+        17rem
+      );
     }
   }
 }
@@ -168,31 +212,31 @@
 @keyframes infinite-scrolling {
   to {
     background-position:
-      calc(var(--first-cloud-X) - 100% - var(--first-cloud-size))
+      x-offset-left(var(--first-cloud-X), var(--first-cloud-size))
         var(--first-cloud-Y),
       var(--first-cloud-X) var(--first-cloud-Y),
-      calc(var(--second-cloud-X) - 100% - var(--second-cloud-size))
+      x-offset-left(var(--second-cloud-X), var(--second-cloud-size))
         var(--second-cloud-Y),
       var(--second-cloud-X) var(--second-cloud-Y),
-      calc(var(--third-cloud-X) - 100% - var(--third-cloud-size))
+      x-offset-left(var(--third-cloud-X), var(--third-cloud-size))
         var(--third-cloud-Y),
       var(--third-cloud-X) var(--third-cloud-Y),
-      calc(var(--fourth-cloud-X) - 100% - var(--fourth-cloud-size))
+      x-offset-left(var(--fourth-cloud-X), var(--fourth-cloud-size))
         var(--fourth-cloud-Y),
       var(--fourth-cloud-X) var(--fourth-cloud-Y),
-      calc(var(--fifth-cloud-X) - 100% - var(--fifth-cloud-size))
+      x-offset-left(var(--fifth-cloud-X), var(--fifth-cloud-size))
         var(--fifth-cloud-Y),
       var(--fifth-cloud-X) var(--fifth-cloud-Y),
-      calc(var(--sixth-cloud-X) - 100% - var(--sixth-cloud-size))
+      x-offset-left(var(--sixth-cloud-X), var(--sixth-cloud-size))
         var(--sixth-cloud-Y),
       var(--sixth-cloud-X) var(--sixth-cloud-Y),
-      calc(var(--seventh-cloud-X) - 100% - var(--seventh-cloud-size))
+      x-offset-left(var(--seventh-cloud-X), var(--seventh-cloud-size))
         var(--seventh-cloud-Y),
       var(--seventh-cloud-X) var(--seventh-cloud-Y),
-      calc(var(--eighth-cloud-X) - 100% - var(--eighth-cloud-size))
+      x-offset-left(var(--eighth-cloud-X), var(--eighth-cloud-size))
         var(--eighth-cloud-Y),
       var(--eighth-cloud-X) var(--eighth-cloud-Y),
-      calc(var(--nineth-cloud-X) - 100% - var(--nineth-cloud-size))
+      x-offset-left(var(--nineth-cloud-X), var(--nineth-cloud-size))
         var(--nineth-cloud-Y),
       var(--nineth-cloud-X) var(--nineth-cloud-Y);
   }

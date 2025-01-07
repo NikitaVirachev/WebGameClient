@@ -85,32 +85,32 @@ $media-sizes: (
 
 @media screen {
   .background {
-    --first-cloud-X: 5%;
-    --first-cloud-Y: 10%;
+    --cloud-1-X: 5%;
+    --cloud-1-Y: 10%;
     --cloud-1-size: 33rem;
-    --second-cloud-X: 60%;
-    --second-cloud-Y: 15%;
+    --cloud-2-X: 60%;
+    --cloud-2-Y: 15%;
     --cloud-2-size: 35rem;
-    --third-cloud-X: 30%;
-    --third-cloud-Y: 40%;
+    --cloud-3-X: 30%;
+    --cloud-3-Y: 40%;
     --cloud-3-size: 40rem;
-    --fourth-cloud-X: 80%;
-    --fourth-cloud-Y: 50%;
+    --cloud-4-X: 80%;
+    --cloud-4-Y: 50%;
     --cloud-4-size: 50rem;
-    --fifth-cloud-X: 20%;
-    --fifth-cloud-Y: 70%;
+    --cloud-5-X: 20%;
+    --cloud-5-Y: 70%;
     --cloud-5-size: 35rem;
-    --sixth-cloud-X: 70%;
-    --sixth-cloud-Y: 90%;
+    --cloud-6-X: 70%;
+    --cloud-6-Y: 90%;
     --cloud-6-size: 46rem;
-    --seventh-cloud-X: 99%;
-    --seventh-cloud-Y: 116%;
+    --cloud-7-X: 99%;
+    --cloud-7-Y: 116%;
     --cloud-7-size: 45rem;
-    --eighth-cloud-X: 90%;
-    --eighth-cloud-Y: 2%;
+    --cloud-8-X: 90%;
+    --cloud-8-Y: 2%;
     --cloud-8-size: 50rem;
-    --nineth-cloud-X: 5%;
-    --nineth-cloud-Y: 90%;
+    --cloud-9-X: 5%;
+    --cloud-9-Y: 90%;
     --cloud-9-size: 28rem;
 
     height: 100%;
@@ -133,33 +133,24 @@ $media-sizes: (
       url(../../assets/clouds/Cloud-5.svg),
       url(../../assets/clouds/Cloud-4.svg), url(../../assets/clouds/Cloud-4.svg);
     background-position:
-      var(--first-cloud-X) var(--first-cloud-Y),
-      x-offset-right(var(--first-cloud-X), var(--cloud-1-size))
-        var(--first-cloud-Y),
-      var(--second-cloud-X) var(--second-cloud-Y),
-      x-offset-right(var(--second-cloud-X), var(--cloud-2-size))
-        var(--second-cloud-Y),
-      var(--third-cloud-X) var(--third-cloud-Y),
-      x-offset-right(var(--third-cloud-X), var(--cloud-3-size))
-        var(--third-cloud-Y),
-      var(--fourth-cloud-X) var(--fourth-cloud-Y),
-      x-offset-right(var(--fourth-cloud-X), var(--cloud-4-size))
-        var(--fourth-cloud-Y),
-      var(--fifth-cloud-X) var(--fifth-cloud-Y),
-      x-offset-right(var(--fifth-cloud-X), var(--cloud-5-size))
-        var(--fifth-cloud-Y),
-      var(--sixth-cloud-X) var(--sixth-cloud-Y),
-      x-offset-right(var(--sixth-cloud-X), var(--cloud-6-size))
-        var(--sixth-cloud-Y),
-      var(--seventh-cloud-X) var(--seventh-cloud-Y),
-      x-offset-right(var(--seventh-cloud-X), var(--cloud-7-size))
-        var(--seventh-cloud-Y),
-      var(--eighth-cloud-X) var(--eighth-cloud-Y),
-      x-offset-right(var(--eighth-cloud-X), var(--cloud-8-size))
-        var(--eighth-cloud-Y),
-      var(--nineth-cloud-X) var(--nineth-cloud-Y),
-      x-offset-right(var(--nineth-cloud-X), var(--cloud-9-size))
-        var(--nineth-cloud-Y);
+      var(--cloud-1-X) var(--cloud-1-Y),
+      x-offset-right(var(--cloud-1-X), var(--cloud-1-size)) var(--cloud-1-Y),
+      var(--cloud-2-X) var(--cloud-2-Y),
+      x-offset-right(var(--cloud-2-X), var(--cloud-2-size)) var(--cloud-2-Y),
+      var(--cloud-3-X) var(--cloud-3-Y),
+      x-offset-right(var(--cloud-3-X), var(--cloud-3-size)) var(--cloud-3-Y),
+      var(--cloud-4-X) var(--cloud-4-Y),
+      x-offset-right(var(--cloud-4-X), var(--cloud-4-size)) var(--cloud-4-Y),
+      var(--cloud-5-X) var(--cloud-5-Y),
+      x-offset-right(var(--cloud-5-X), var(--cloud-5-size)) var(--cloud-5-Y),
+      var(--cloud-6-X) var(--cloud-6-Y),
+      x-offset-right(var(--cloud-6-X), var(--cloud-6-size)) var(--cloud-6-Y),
+      var(--cloud-7-X) var(--cloud-7-Y),
+      x-offset-right(var(--cloud-7-X), var(--cloud-7-size)) var(--cloud-7-Y),
+      var(--cloud-8-X) var(--cloud-8-Y),
+      x-offset-right(var(--cloud-8-X), var(--cloud-8-size)) var(--cloud-8-Y),
+      var(--cloud-9-X) var(--cloud-9-Y),
+      x-offset-right(var(--cloud-9-X), var(--cloud-9-size)) var(--cloud-9-Y);
     background-size: var(--cloud-1-size), var(--cloud-1-size),
       var(--cloud-2-size), var(--cloud-2-size), var(--cloud-3-size),
       var(--cloud-3-size), var(--cloud-4-size), var(--cloud-4-size),
@@ -182,35 +173,23 @@ $media-sizes: (
   }
 }
 
+@function generate-cloud-positions() {
+  $positions: ();
+
+  @for $i from 1 through 9 {
+    $left: x-offset-left(var(--cloud-#{$i}-X), var(--cloud-#{$i}-size))
+      var(--cloud-#{$i}-Y);
+    $right: var(--cloud-#{$i}-X) var(--cloud-#{$i}-Y);
+
+    $positions: append($positions, $left, comma);
+    $positions: append($positions, $right, comma);
+  }
+
+  @return $positions;
+}
+
 @keyframes infinite-scrolling {
   to {
-    background-position:
-      x-offset-left(var(--first-cloud-X), var(--cloud-1-size))
-        var(--first-cloud-Y),
-      var(--first-cloud-X) var(--first-cloud-Y),
-      x-offset-left(var(--second-cloud-X), var(--cloud-2-size))
-        var(--second-cloud-Y),
-      var(--second-cloud-X) var(--second-cloud-Y),
-      x-offset-left(var(--third-cloud-X), var(--cloud-3-size))
-        var(--third-cloud-Y),
-      var(--third-cloud-X) var(--third-cloud-Y),
-      x-offset-left(var(--fourth-cloud-X), var(--cloud-4-size))
-        var(--fourth-cloud-Y),
-      var(--fourth-cloud-X) var(--fourth-cloud-Y),
-      x-offset-left(var(--fifth-cloud-X), var(--cloud-5-size))
-        var(--fifth-cloud-Y),
-      var(--fifth-cloud-X) var(--fifth-cloud-Y),
-      x-offset-left(var(--sixth-cloud-X), var(--cloud-6-size))
-        var(--sixth-cloud-Y),
-      var(--sixth-cloud-X) var(--sixth-cloud-Y),
-      x-offset-left(var(--seventh-cloud-X), var(--cloud-7-size))
-        var(--seventh-cloud-Y),
-      var(--seventh-cloud-X) var(--seventh-cloud-Y),
-      x-offset-left(var(--eighth-cloud-X), var(--cloud-8-size))
-        var(--eighth-cloud-Y),
-      var(--eighth-cloud-X) var(--eighth-cloud-Y),
-      x-offset-left(var(--nineth-cloud-X), var(--cloud-9-size))
-        var(--nineth-cloud-Y),
-      var(--nineth-cloud-X) var(--nineth-cloud-Y);
+    background-position: #{generate-cloud-positions()};
   }
 }

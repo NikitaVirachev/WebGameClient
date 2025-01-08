@@ -1,0 +1,12 @@
+.name {
+  font-family: 'AncientModernTales', serif;
+  font-size: 15rem;
+  color: var(--primary);
+  -webkit-text-stroke: 1px var(--black);
+  text-shadow:
+    3px 3px 0 var(--black),
+    -1px -1px 0 var(--black),
+    1px -1px 0 var(--black),
+    -1px 1px 0 var(--black),
+    1px 1px 0 var(--black);
+}

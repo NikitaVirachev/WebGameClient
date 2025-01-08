@@ -144,6 +144,7 @@ $media-sizes: (
     --cloud-9-Y: 90%;
     --cloud-9-size: 28rem;
 
+    position: relative;
     height: 100%;
     background-color: var(--blue-sky);
     background-image: url(../../assets/clouds/Cloud-1.svg),

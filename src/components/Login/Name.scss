@@ -28,7 +28,7 @@
 
 .text-curve [style*='--index'] {
   --x: calc((var(--index) - (var(--length) - 1) / 2) * var(--step));
-  --y: calc(var(--a) * var(--x) * var(--x) + var(--c));
+  --y: calc(var(--a) * var(--x) * var(--x) + var(--x) * var(--b) + var(--c));
   left: calc(var(--x) * 1ch);
   top: calc(var(--y) * 1ch);
 }

@@ -13,28 +13,24 @@
 
 .text-curve {
   position: relative;
-  width: calc(var(--length) * 1ch);
-  height: calc(var(--height, 10) * 1ch); /* Высота текста (динамическая) */
 }
 
 .text-curve [style*='--index'] {
   position: absolute;
-  transform: translate(-50%, -50%);
-  font-size: 1rem;
 }
 
 .text-curve {
-  --a: calc(1 / (var(--length))); /* Коэффициент параболы зависит от длины */
+  --a: calc(1 / (var(--length))); /* Старший коэфициент */
+  --b: 0; /* Коэфициент при x */
+  --c: -7; /* Свободный член */
   --step: calc(var(--length) / (var(--length) - 1)); /* Шаг между символами */
 }
 
 .text-curve [style*='--index'] {
-  --x: calc(
-    (var(--index) - (var(--length) - 1) / 2) * var(--step)
-  ); /* X координата */
-  --y: calc(var(--a) * var(--x) * var(--x)); /* Y координата */
-  left: calc(50% + var(--x) * 1ch); /* Позиция по X */
-  top: calc(50% - var(--y) * 1ch); /* Позиция по Y */
+  --x: calc((var(--index) - (var(--length) - 1) / 2) * var(--step));
+  --y: calc(var(--a) * var(--x) * var(--x) + var(--c));
+  left: calc(var(--x) * 1ch);
+  top: calc(var(--y) * 1ch);
 }
 
 .sr-only {

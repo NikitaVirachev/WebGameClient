@@ -6,7 +6,7 @@ const Login = () => {
   return (
     <Background>
       <div className="login">
-        <Name />
+        <Name name="The First Game" />
       </div>
     </Background>
   );

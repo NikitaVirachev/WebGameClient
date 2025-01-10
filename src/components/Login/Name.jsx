@@ -12,9 +12,17 @@ const Name = ({ name }) => {
       // Суммируем ширины всех символов, чтобы вычислить центр
       let totalWidth = 0;
       const widths = [];
+      const spaceWidth = 50;
 
       letters.forEach((letter) => {
-        const width = letter.offsetWidth;
+        const char = letter.textContent;
+
+        let width = 0;
+        if (char === ' ') {
+          width = spaceWidth;
+        } else {
+          width = letter.offsetWidth;
+        }
         widths.push(width);
         totalWidth += width;
       });
@@ -34,16 +42,12 @@ const Name = ({ name }) => {
       container.style.setProperty('--length', name.length);
     };
 
-    const updateCurve = () => {
-      calculateCurve();
-    };
-
     if (document.fonts && document.fonts.ready) {
       // Дождаться загрузки шрифтов
-      document.fonts.ready.then(updateCurve);
+      document.fonts.ready.then(calculateCurve);
     } else {
       // Fallback на случай, если API `fonts` недоступен
-      updateCurve();
+      calculateCurve();
     }
   }, [name]);
 

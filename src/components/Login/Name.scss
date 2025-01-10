@@ -13,24 +13,21 @@
 
 .text-curve {
   position: relative;
+
+  --a: calc(1 / (80 * var(--length))); /* Старший коэфициент */
+  --b: 0; /* Коэфициент при x */
+  --c: -500; /* Свободный член */
 }
 
 .text-curve [style*='--index'] {
   position: absolute;
-}
 
-.text-curve {
-  --a: calc(1 / (var(--length))); /* Старший коэфициент */
-  --b: 0; /* Коэфициент при x */
-  --c: -7; /* Свободный член */
-  --step: calc(var(--length) / (var(--length) - 1)); /* Шаг между символами */
-}
+  --y: calc(var(--a) * var(--x) * var(--x) + var(--b) * var(--x) + var(--c));
+  left: calc(var(--x) * 1px);
+  top: calc(var(--y) * 1px);
 
-.text-curve [style*='--index'] {
-  --x: calc((var(--index) - (var(--length) - 1) / 2) * var(--step));
-  --y: calc(var(--a) * var(--x) * var(--x) + var(--x) * var(--b) + var(--c));
-  left: calc(var(--x) * 1ch);
-  top: calc(var(--y) * 1ch);
+  // --angle: calc(atan2(var(--y), var(--x)));
+  // transform: rotate(calc(var(--angle) + 90deg));
 }
 
 .sr-only {

@@ -4,38 +4,47 @@ import './Name.scss';
 const Name = ({ name }) => {
   const textCurveRef = useRef(null);
 
-  const calculateCurve = () => {
-    const container = textCurveRef.current;
-    const letters = container.querySelectorAll('span[style*="--index"]');
-
-    // Суммируем ширины всех символов, чтобы вычислить центр
-    let totalWidth = 0;
-    const widths = [];
-
-    letters.forEach((letter) => {
-      const width = letter.offsetWidth;
-      widths.push(width);
-      totalWidth += width;
-    });
-
-    // Начальная точка (с учётом центрирования)
-    let cumulativeX = -totalWidth / 2;
-
-    letters.forEach((letter, index) => {
-      // Устанавливаем значение `--x` для текущего символа
-      letter.style.setProperty('--x', cumulativeX);
-
-      // Увеличиваем `cumulativeX` на ширину текущего символа
-      cumulativeX += widths[index];
-    });
-
-    // Устанавливаем общее количество символов в переменной --length
-    container.style.setProperty('--length', name.length);
-  };
-
-  // Вызываем функцию после рендера
   useEffect(() => {
-    calculateCurve();
+    const calculateCurve = () => {
+      const container = textCurveRef.current;
+      const letters = container.querySelectorAll('span[style*="--index"]');
+
+      // Суммируем ширины всех символов, чтобы вычислить центр
+      let totalWidth = 0;
+      const widths = [];
+
+      letters.forEach((letter) => {
+        const width = letter.offsetWidth;
+        widths.push(width);
+        totalWidth += width;
+      });
+
+      // Начальная точка (с учётом центрирования)
+      let cumulativeX = -totalWidth / 2;
+
+      letters.forEach((letter, index) => {
+        // Устанавливаем значение `--x` для текущего символа
+        letter.style.setProperty('--x', cumulativeX);
+
+        // Увеличиваем `cumulativeX` на ширину текущего символа
+        cumulativeX += widths[index];
+      });
+
+      // Устанавливаем общее количество символов в переменной --length
+      container.style.setProperty('--length', name.length);
+    };
+
+    const updateCurve = () => {
+      calculateCurve();
+    };
+
+    if (document.fonts && document.fonts.ready) {
+      // Дождаться загрузки шрифтов
+      document.fonts.ready.then(updateCurve);
+    } else {
+      // Fallback на случай, если API `fonts` недоступен
+      updateCurve();
+    }
   }, [name]);
 
   return (

@@ -5,6 +5,21 @@ const Name = ({ name }) => {
   const textCurveRef = useRef(null);
 
   useEffect(() => {
+    const calculateCoefficients = () => {
+      const container = document.querySelector('.login');
+      const textContainer = textCurveRef.current;
+
+      // Получаем ширину и высоту контейнера .login
+      const loginWidth = parseFloat(getComputedStyle(container).width); // Ширина в px
+      console.log(loginWidth);
+
+      const c = 50 * -1;
+      textContainer.style.setProperty('--c', c);
+
+      const a = -c / Math.pow(loginWidth / 2, 2);
+      textContainer.style.setProperty('--a', a);
+    };
+
     const calculateCurve = () => {
       const container = textCurveRef.current;
       const letters = container.querySelectorAll('span[style*="--index"]');
@@ -42,12 +57,17 @@ const Name = ({ name }) => {
       container.style.setProperty('--length', name.length);
     };
 
+    const makeAndSolveQuadraticEquation = () => {
+      calculateCoefficients();
+      calculateCurve();
+    };
+
     if (document.fonts && document.fonts.ready) {
       // Дождаться загрузки шрифтов
-      document.fonts.ready.then(calculateCurve);
+      document.fonts.ready.then(makeAndSolveQuadraticEquation);
     } else {
       // Fallback на случай, если API `fonts` недоступен
-      calculateCurve();
+      makeAndSolveQuadraticEquation();
     }
   }, [name]);
 

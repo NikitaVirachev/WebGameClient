@@ -5,6 +5,8 @@ const Name = ({ name, parentElement }) => {
   const textCurveRef = useRef(null);
 
   useEffect(() => {
+    const c = -50;
+
     const calculateCoefficients = () => {
       const textContainer = textCurveRef.current;
 
@@ -12,7 +14,6 @@ const Name = ({ name, parentElement }) => {
         getComputedStyle(parentElement.current).width,
       );
 
-      const c = 50 * -1;
       textContainer.style.setProperty('--c', c);
 
       const a = -c / Math.pow(loginWidth / 2, 2);
@@ -54,6 +55,7 @@ const Name = ({ name, parentElement }) => {
 
       // Устанавливаем общее количество символов в переменной --length
       container.style.setProperty('--length', name.length);
+      container.style.setProperty('--h', -c - letters[0].offsetHeight);
     };
 
     const makeAndSolveQuadraticEquation = () => {

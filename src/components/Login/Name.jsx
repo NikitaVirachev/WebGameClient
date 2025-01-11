@@ -1,17 +1,16 @@
 import { useEffect, useRef } from 'react';
 import './Name.scss';
 
-const Name = ({ name }) => {
+const Name = ({ name, parentElement }) => {
   const textCurveRef = useRef(null);
 
   useEffect(() => {
     const calculateCoefficients = () => {
-      const container = document.querySelector('.login');
       const textContainer = textCurveRef.current;
 
-      // Получаем ширину и высоту контейнера .login
-      const loginWidth = parseFloat(getComputedStyle(container).width); // Ширина в px
-      console.log(loginWidth);
+      const loginWidth = parseFloat(
+        getComputedStyle(parentElement.current).width,
+      );
 
       const c = 50 * -1;
       textContainer.style.setProperty('--c', c);
@@ -69,7 +68,7 @@ const Name = ({ name }) => {
       // Fallback на случай, если API `fonts` недоступен
       makeAndSolveQuadraticEquation();
     }
-  }, [name]);
+  }, [name, parentElement]);
 
   return (
     <h1 className="name">

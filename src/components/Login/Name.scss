@@ -9,11 +9,12 @@
     1px -1px 0 var(--black),
     -1px 1px 0 var(--black),
     1px 1px 0 var(--black);
+
+  position: absolute;
+  left: 50%;
 }
 
 .text-curve {
-  position: relative;
-
   --a: calc(1 / (80 * var(--length))); /* Старший коэфициент */
   --b: 0; /* Коэфициент при x */
   --c: -500; /* Свободный член */

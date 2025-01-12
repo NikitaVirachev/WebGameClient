@@ -1,7 +1,11 @@
 import './Form.scss';
 
-const Form = () => {
-  return <form className="form"></form>;
+const Form = ({ children, onSubmit, className }) => {
+  return (
+    <form onSubmit={onSubmit} className={`form ${className}`}>
+      {children}
+    </form>
+  );
 };
 
 export default Form;

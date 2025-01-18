@@ -1,6 +1,8 @@
+@use '../../styles/abstracts/mixins';
+
 .name {
   font-family: 'AncientModernTales', serif;
-  font-size: 15rem;
+  font-size: 13rem;
   color: var(--primary);
   -webkit-text-stroke: 1px var(--black);
   text-shadow:
@@ -12,6 +14,13 @@
 
   position: absolute;
   left: 50%;
+
+  @include mixins.respond(big-desktop) {
+    font-size: 15rem;
+  }
+  @include mixins.respond(tab-land) {
+    font-size: 13rem;
+  }
 }
 
 .text-curve {

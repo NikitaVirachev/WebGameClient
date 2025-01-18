@@ -1,3 +1,8 @@
+@use '../../../styles/abstracts/mixins';
+
+$login-width: 40rem;
+$login-height: 40rem;
+
 .login {
   position: absolute;
   top: 50%;
@@ -8,5 +13,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    width: $login-width;
+    height: $login-height;
+  }
+
+  @include mixins.respond(big-desktop) {
+    $login-width: 50rem;
+    $login-height: 60rem;
+  }
+  @include mixins.respond(tab-land) {
+    $login-width: 30rem;
+    $login-height: 30rem;
   }
 }

@@ -3,5 +3,17 @@
   font-size: 2rem;
   color: var(--font-color);
   border: 1px solid var(--font-color);
-  padding: 2rem 4rem;
+
+  &__container {
+    width: 15rem;
+    height: 6rem;
+  }
+
+  &__pixel {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+}
+
+.pixelart-to-css {
 }

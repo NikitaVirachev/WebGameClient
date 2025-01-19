@@ -1,8 +1,5 @@
 @use '../../../styles/abstracts/mixins';
 
-$login-width: 40rem;
-$login-height: 40rem;
-
 .login {
   position: absolute;
   top: 50%;
@@ -14,16 +11,24 @@ $login-height: 40rem;
     justify-content: center;
     align-items: center;
 
-    width: $login-width;
-    height: $login-height;
-  }
+    width: 40rem;
+    height: 50rem;
 
-  @include mixins.respond(big-desktop) {
-    $login-width: 50rem;
-    $login-height: 60rem;
-  }
-  @include mixins.respond(tab-land) {
-    $login-width: 30rem;
-    $login-height: 30rem;
+    @include mixins.respond(big-desktop) {
+      width: 50rem;
+      height: 60rem;
+    }
+    @include mixins.respond(tab-land) {
+      width: 38rem;
+      height: 45rem;
+    }
+    @include mixins.respond(phone-lg) {
+      width: 35rem;
+      height: 45rem;
+    }
+    @include mixins.respond(phone-sm) {
+      width: 26rem;
+      height: 45rem;
+    }
   }
 }

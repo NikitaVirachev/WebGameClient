@@ -13,23 +13,23 @@
 
     padding: 3rem;
 
-    min-width: 40rem;
+    // min-width: 40rem;
     min-height: 50rem;
 
     @include mixins.respond(big-desktop) {
-      min-width: 50rem;
+      // min-width: 50rem;
       min-height: 60rem;
     }
     @include mixins.respond(tab-land) {
-      min-width: 38rem;
+      // min-width: 38rem;
       min-height: 45rem;
     }
     @include mixins.respond(phone-lg) {
-      min-width: 35rem;
+      // min-width: 35rem;
       min-height: 45rem;
     }
     @include mixins.respond(phone-sm) {
-      min-width: 26rem;
+      // min-width: 26rem;
       min-height: 45rem;
     }
   }

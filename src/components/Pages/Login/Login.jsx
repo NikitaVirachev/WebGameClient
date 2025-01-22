@@ -8,12 +8,18 @@ import './Login.scss';
 
 const Login = () => {
   const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
   const loginRef = useRef(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log(name);
+    const authInfo = { name, password };
+
+    console.log(authInfo);
+
+    setName('');
+    setPassword('');
   };
 
   return (
@@ -25,9 +31,19 @@ const Login = () => {
             id="login-name"
             name="login"
             type="text"
+            value={name}
             onChange={(e) => setName(e.target.value)}
           >
             Enter name:
+          </InputText>
+          <InputText
+            id="login-password"
+            name="login"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          >
+            Enter passowrd:
           </InputText>
           <Button type="submit">Log In</Button>
         </Form>

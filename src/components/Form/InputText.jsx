@@ -1,10 +1,16 @@
 import classes from './InputText.module.scss';
 
-const InputText = ({ id, name, children }) => {
+const InputText = ({ id, name, type = 'text', onChange, children }) => {
   return (
     <div className={classes.input__container}>
       <label htmlFor={id}>{children}</label>
-      <input type="text" className={classes.input} name={name} id={id} />
+      <input
+        type={type}
+        className={classes.input}
+        name={name}
+        id={id}
+        onChange={onChange}
+      />
     </div>
   );
 };

@@ -21,7 +21,12 @@ const Login = () => {
       <div className="login" ref={loginRef}>
         <Name name="The First Game" parentElement={loginRef} />
         <Form className="login-form" name="login" onSubmit={handleSubmit}>
-          <InputText id="login-name" onChange={(e) => setName(e.target.value)}>
+          <InputText
+            id="login-name"
+            name="login"
+            type="text"
+            onChange={(e) => setName(e.target.value)}
+          >
             Enter name:
           </InputText>
           <Button type="submit">Log In</Button>

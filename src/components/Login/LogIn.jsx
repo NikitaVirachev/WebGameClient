@@ -1,7 +1,13 @@
 import Button from '../Form/Button';
 import InputText from '../Form/InputText';
 
-const LogIn = ({ name, handleNameChange, password, handlePasswordChange }) => {
+const LogIn = ({
+  name,
+  handleNameChange,
+  password,
+  handlePasswordChange,
+  onAuthModeToggle,
+}) => {
   return (
     <>
       <InputText
@@ -23,6 +29,17 @@ const LogIn = ({ name, handleNameChange, password, handlePasswordChange }) => {
         Enter passowrd:
       </InputText>
       <Button type="submit">Log In</Button>
+      <p>
+        Don`&apos;`t have an account?{' '}
+        <a
+          href="#"
+          role="button"
+          onClick={(e) => onAuthModeToggle(e)}
+          className="form__link"
+        >
+          Sign up
+        </a>
+      </p>
     </>
   );
 };

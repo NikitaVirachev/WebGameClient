@@ -5,4 +5,12 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+
+  font-family: 'PixelifySans', sans-serif;
+  font-size: 2rem;
+  color: var(--font-color);
+
+  &__link {
+    color: var(--primary);
+  }
 }

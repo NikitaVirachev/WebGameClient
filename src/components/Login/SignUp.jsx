@@ -27,16 +27,16 @@ const SignUp = ({ onAuthModeToggle }) => {
       <fieldset>
         <legend className="form__legend">Register</legend>
         <InputText
-          id="login-name"
-          name="login"
+          id="name"
+          name="user-name"
           value={name}
           onChange={(e) => setName(e.target.value)}
         >
           Enter name:
         </InputText>
         <InputText
-          id="login-email"
-          name="login"
+          id="email"
+          name="user-email"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -44,8 +44,8 @@ const SignUp = ({ onAuthModeToggle }) => {
           Enter email:
         </InputText>
         <InputText
-          id="login-password"
-          name="login"
+          id="password"
+          name="password"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -53,8 +53,8 @@ const SignUp = ({ onAuthModeToggle }) => {
           Enter passowrd:
         </InputText>
         <InputText
-          id="login-repeat-password"
-          name="login"
+          id="repeat-password"
+          name="repeat-password"
           type="password"
           value={repeatPassword}
           onChange={(e) => setRepeatPassword(e.target.value)}

@@ -23,8 +23,8 @@ const LogIn = ({ onAuthModeToggle }) => {
       <fieldset>
         <legend className="form__legend">Login</legend>
         <InputText
-          id="login-name"
-          name="login"
+          id="name"
+          name="user-name"
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -32,8 +32,8 @@ const LogIn = ({ onAuthModeToggle }) => {
           Enter name:
         </InputText>
         <InputText
-          id="login-password"
-          name="login"
+          id="password"
+          name="password"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}

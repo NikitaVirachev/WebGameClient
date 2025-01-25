@@ -25,7 +25,7 @@ const SignUp = ({ onAuthModeToggle }) => {
   return (
     <Form className="login-form" name="login" onSubmit={handleSubmit}>
       <fieldset>
-        <legend className="form__legend">REGISTER</legend>
+        <legend className="form__legend">Register</legend>
         <InputText
           id="login-name"
           name="login"

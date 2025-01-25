@@ -1,24 +1,34 @@
+import { useState } from 'react';
+import Form from '../Form/Form';
 import Button from '../Form/Button';
 import InputText from '../Form/InputText';
 
-const SignUp = ({
-  name,
-  handleNameChange,
-  email,
-  handleEmailChange,
-  password,
-  handlePasswordChange,
-  repeatPassword,
-  handleRepeatPasswordChange,
-  onAuthModeToggle,
-}) => {
+const SignUp = ({ onAuthModeToggle }) => {
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+  const [repeatPassword, setRepeatPassword] = useState('');
+  const [email, setEmail] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const authInfo = { name, password, repeatPassword, email };
+
+    console.log(authInfo);
+
+    setName('');
+    setPassword('');
+    setRepeatPassword('');
+    setEmail('');
+  };
+
   return (
-    <>
+    <Form className="login-form" name="login" onSubmit={handleSubmit}>
       <InputText
         id="login-name"
         name="login"
         value={name}
-        onChange={handleNameChange}
+        onChange={(e) => setName(e.target.value)}
       >
         Enter name:
       </InputText>
@@ -27,7 +37,7 @@ const SignUp = ({
         name="login"
         type="email"
         value={email}
-        onChange={handleEmailChange}
+        onChange={(e) => setEmail(e.target.value)}
       >
         Enter email:
       </InputText>
@@ -36,7 +46,7 @@ const SignUp = ({
         name="login"
         type="password"
         value={password}
-        onChange={handlePasswordChange}
+        onChange={(e) => setPassword(e.target.value)}
       >
         Enter passowrd:
       </InputText>
@@ -45,7 +55,7 @@ const SignUp = ({
         name="login"
         type="password"
         value={repeatPassword}
-        onChange={handleRepeatPasswordChange}
+        onChange={(e) => setRepeatPassword(e.target.value)}
       >
         Repeat passowrd:
       </InputText>
@@ -61,7 +71,7 @@ const SignUp = ({
           Log in
         </a>
       </p>
-    </>
+    </Form>
   );
 };
 

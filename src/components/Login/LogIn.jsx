@@ -1,21 +1,31 @@
+import { useState } from 'react';
+import Form from '../Form/Form';
 import Button from '../Form/Button';
 import InputText from '../Form/InputText';
 
-const LogIn = ({
-  name,
-  handleNameChange,
-  password,
-  handlePasswordChange,
-  onAuthModeToggle,
-}) => {
+const LogIn = ({ onAuthModeToggle }) => {
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const authInfo = { name, password };
+
+    console.log(authInfo);
+
+    setName('');
+    setPassword('');
+  };
+
   return (
-    <>
+    <Form className="login-form" name="login" onSubmit={handleSubmit}>
       <InputText
         id="login-name"
         name="login"
         type="text"
         value={name}
-        onChange={handleNameChange}
+        onChange={(e) => setName(e.target.value)}
       >
         Enter name:
       </InputText>
@@ -24,7 +34,7 @@ const LogIn = ({
         name="login"
         type="password"
         value={password}
-        onChange={handlePasswordChange}
+        onChange={(e) => setPassword(e.target.value)}
       >
         Enter passowrd:
       </InputText>
@@ -40,7 +50,7 @@ const LogIn = ({
           Sign up
         </a>
       </p>
-    </>
+    </Form>
   );
 };
 

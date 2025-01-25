@@ -2,7 +2,7 @@ import classes from './InputText.module.scss';
 
 const InputText = ({ id, name, type = 'text', value, onChange, children }) => {
   return (
-    <p className={classes.input__container}>
+    <div className={classes.input__container}>
       <label htmlFor={id}>{children}</label>
       <input
         type={type}
@@ -13,7 +13,7 @@ const InputText = ({ id, name, type = 'text', value, onChange, children }) => {
         required
         value={value}
       />
-    </p>
+    </div>
   );
 };
 

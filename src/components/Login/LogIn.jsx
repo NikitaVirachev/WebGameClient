@@ -20,8 +20,9 @@ const LogIn = ({ onAuthModeToggle }) => {
 
   return (
     <Form className="login-form" name="login" onSubmit={handleSubmit}>
-      <fieldset>
-        <legend className="form__legend">Login</legend>
+      <h2>Log In</h2>
+
+      <div className="form__inputs">
         <InputText
           id="name"
           name="user-name"
@@ -40,6 +41,9 @@ const LogIn = ({ onAuthModeToggle }) => {
         >
           Enter passowrd:
         </InputText>
+      </div>
+
+      <div className="form__actions">
         <Button type="submit">Log In</Button>
         <p>
           Don&apos;t have an account?{' '}
@@ -52,7 +56,7 @@ const LogIn = ({ onAuthModeToggle }) => {
             Sign up
           </a>
         </p>
-      </fieldset>
+      </div>
     </Form>
   );
 };

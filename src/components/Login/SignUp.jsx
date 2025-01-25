@@ -24,8 +24,9 @@ const SignUp = ({ onAuthModeToggle }) => {
 
   return (
     <Form className="login-form" name="login" onSubmit={handleSubmit}>
-      <fieldset>
-        <legend className="form__legend">Register</legend>
+      <h2>Register</h2>
+
+      <div className="form__inputs">
         <InputText
           id="name"
           name="user-name"
@@ -61,6 +62,9 @@ const SignUp = ({ onAuthModeToggle }) => {
         >
           Repeat passowrd:
         </InputText>
+      </div>
+
+      <div className="form__actions">
         <Button type="submit">Sign Up</Button>
         <p>
           Already have an account?{' '}
@@ -73,7 +77,7 @@ const SignUp = ({ onAuthModeToggle }) => {
             Log in
           </a>
         </p>
-      </fieldset>
+      </div>
     </Form>
   );
 };

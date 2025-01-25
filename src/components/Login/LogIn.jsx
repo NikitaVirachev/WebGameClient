@@ -40,7 +40,7 @@ const LogIn = ({ onAuthModeToggle }) => {
       </InputText>
       <Button type="submit">Log In</Button>
       <p>
-        Don`&apos;`t have an account?{' '}
+        Don&apos;t have an account?{' '}
         <a
           href="#"
           role="button"

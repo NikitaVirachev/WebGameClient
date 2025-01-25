@@ -2,15 +2,21 @@
   background-color: var(--form-background);
   border-radius: 5rem;
 
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-
   font-family: 'PixelifySans', sans-serif;
   font-size: 2rem;
   color: var(--font-color);
 
   &__link {
     color: var(--primary);
+  }
+
+  & fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__legend {
+    text-transform: uppercase;
   }
 }

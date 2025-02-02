@@ -8,18 +8,29 @@ const SignUp = ({ onAuthModeToggle }) => {
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [email, setEmail] = useState('');
+  const [errMsg, setErrMsg] = useState('');
+
+  const cleanForm = () => {
+    setName('');
+    setPassword('');
+    setRepeatPassword('');
+    setEmail('');
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const authInfo = { name, password, repeatPassword, email };
 
-    console.log(authInfo);
+    cleanForm();
 
-    setName('');
-    setPassword('');
-    setRepeatPassword('');
-    setEmail('');
+    if (password !== repeatPassword) {
+      setErrMsg('Passwords do NOT match');
+      return;
+    } else {
+      setErrMsg('');
+      console.log(authInfo);
+    }
   };
 
   return (
@@ -62,6 +73,8 @@ const SignUp = ({ onAuthModeToggle }) => {
         >
           Repeat passowrd:
         </InputText>
+
+        {errMsg && <p className="form__error">{errMsg}</p>}
       </section>
 
       <section className="form__actions">

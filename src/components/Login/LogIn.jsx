@@ -7,15 +7,27 @@ const LogIn = ({ onAuthModeToggle }) => {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
 
-    const authInfo = { name, password };
+      const authInfo = { name, password };
 
-    console.log(authInfo);
+      const response = await fetch('/api/v1/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(authInfo),
+      });
 
-    setName('');
-    setPassword('');
+      console.log(response);
+
+      setName('');
+      setPassword('');
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (

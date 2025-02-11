@@ -17,19 +17,31 @@ const SignUp = ({ onAuthModeToggle }) => {
     setEmail('');
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    const authInfo = { name, password, repeatPassword, email };
-
-    cleanForm();
-
-    if (password !== repeatPassword) {
-      setErrMsg('Passwords do NOT match');
-      return;
-    } else {
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
       setErrMsg('');
-      console.log(authInfo);
+
+      const authInfo = { name, password, repeatPassword, email };
+
+      cleanForm();
+
+      if (password !== repeatPassword) {
+        setErrMsg('Passwords do NOT match');
+        return;
+      }
+
+      const user = await fetch('/api/v1/users/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(authInfo),
+      });
+
+      console.log(user);
+    } catch (err) {
+      setErrMsg(err.message);
     }
   };
 

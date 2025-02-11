@@ -13,7 +13,7 @@ const LogIn = ({ onAuthModeToggle }) => {
 
       const authInfo = { name, password };
 
-      const response = await fetch('/api/v1/login', {
+      const response = await fetch('/api/v1/users/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

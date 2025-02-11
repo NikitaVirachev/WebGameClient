@@ -4,14 +4,14 @@ import Button from '../Form/Button';
 import InputText from '../Form/InputText';
 
 const LogIn = ({ onAuthModeToggle }) => {
-  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
 
-      const authInfo = { name, password };
+      const authInfo = { email, password };
 
       const response = await fetch('/api/v1/users/login', {
         method: 'POST',
@@ -23,7 +23,7 @@ const LogIn = ({ onAuthModeToggle }) => {
 
       console.log(response);
 
-      setName('');
+      setEmail('');
       setPassword('');
     } catch (err) {
       console.error(err);
@@ -36,13 +36,13 @@ const LogIn = ({ onAuthModeToggle }) => {
 
       <section className="form__inputs">
         <InputText
-          id="name"
-          name="user-name"
+          id="email"
+          name="email"
           type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         >
-          Enter name:
+          Enter email:
         </InputText>
         <InputText
           id="password"

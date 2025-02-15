@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Form from '../Form/Form';
 import Button from '../Form/Button';
 import InputText from '../Form/InputText';
+import { acceptJsend } from '../../utils/api';
 
 const LogIn = ({ onAuthModeToggle }) => {
   const [email, setEmail] = useState('');
@@ -21,7 +22,9 @@ const LogIn = ({ onAuthModeToggle }) => {
         body: JSON.stringify(authInfo),
       });
 
-      console.log(response);
+      const data = await acceptJsend(response);
+      const user = data.user;
+      console.log(user);
 
       setEmail('');
       setPassword('');

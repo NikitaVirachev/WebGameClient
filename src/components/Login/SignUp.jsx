@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Form from '../Form/Form';
 import Button from '../Form/Button';
 import InputText from '../Form/InputText';
+import { acceptJsend } from '../../utils/api';
 
 const SignUp = ({ onAuthModeToggle }) => {
   const [name, setName] = useState('');
@@ -31,7 +32,7 @@ const SignUp = ({ onAuthModeToggle }) => {
         return;
       }
 
-      const user = await fetch('/api/v1/users/signup', {
+      const response = await fetch('/api/v1/users/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -39,6 +40,8 @@ const SignUp = ({ onAuthModeToggle }) => {
         body: JSON.stringify(authInfo),
       });
 
+      const data = await acceptJsend(response);
+      const user = data.user;
       console.log(user);
     } catch (err) {
       setErrMsg(err.message);
